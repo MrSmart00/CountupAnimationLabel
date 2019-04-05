@@ -28,7 +28,7 @@ class MyViewController : UIViewController {
     }
 
     @objc func reload() {
-        label?.animate(start: 1000, end: 5350, duration: 1)
+        label?.animate(start: 1000, end: 20000, duration: 1)
             .drive()
             .disposed(by: disposeBag)
     }

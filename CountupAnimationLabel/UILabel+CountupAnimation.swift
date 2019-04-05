@@ -12,22 +12,6 @@ import RxSwift
 import RxCocoa
 
 extension UILabel {
-//    public func animate(start: Int, end: Int, duration: Float) -> Driver<Int> {
-//        let formatter = NumberFormatter()
-//        formatter.numberStyle = .decimal
-//        self.text = formatter.string(for: start)
-////        let interval = RxTimeInterval(duration / (Float(end) - Float(start)))
-//        let interval = RxTimeInterval(min(0.001, duration / (Float(end) - Float(start))))
-//
-//        let timer = Observable<Int>.interval(interval, scheduler: MainScheduler.instance)
-//        return timer
-//            .takeWhile { $0 <= (end - start) }
-//            .map { $0 + start }
-//            .do(onNext: { [weak self] (count) in
-//                self?.text = formatter.string(for: count)
-//            })
-//            .asDriver(onErrorJustReturn: 0)
-//    }
 
     public func animate(start: Int, end: Int, duration: Float) -> Driver<Int> {
         let formatter = NumberFormatter()
@@ -39,7 +23,7 @@ extension UILabel {
 
         let timer = Observable<Int>.interval(interval, scheduler: MainScheduler.instance)
         return timer
-            .takeWhile { $0 < delta }
+            .takeWhile { $0 < 1001 }
             .map { Int(Float(delta) * easeInOut[$0]) + start }
             .do(onNext: { [weak self] (count) in
                 self?.text = formatter.string(for: count)

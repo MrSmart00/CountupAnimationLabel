@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6AC4F73A2256EA320013858E /* Easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC4F7392256EA320013858E /* Easing.swift */; };
-		6AC4F73B2256FD860013858E /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4AB6F9C2256663B0088AF95 /* RxAtomic.framework */; };
 		6AC4F73C2256FD860013858E /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4AB6F9B2256663B0088AF95 /* RxBlocking.framework */; };
 		6AC4F73D2256FD860013858E /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4AB6F9D2256663B0088AF95 /* RxCocoa.framework */; };
 		6AC4F73E2256FD860013858E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4AB6F9A2256663B0088AF95 /* RxSwift.framework */; };
@@ -33,7 +31,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6AC4F7392256EA320013858E /* Easing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Easing.swift; sourceTree = "<group>"; };
 		C4AB6F7C225660700088AF95 /* CountupAnimationLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CountupAnimationLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4AB6F7F225660700088AF95 /* CountupAnimationLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountupAnimationLabel.h; sourceTree = "<group>"; };
 		C4AB6F80225660700088AF95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,7 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AC4F73B2256FD860013858E /* RxAtomic.framework in Frameworks */,
 				6AC4F73C2256FD860013858E /* RxBlocking.framework in Frameworks */,
 				6AC4F73D2256FD860013858E /* RxCocoa.framework in Frameworks */,
 				6AC4F73E2256FD860013858E /* RxSwift.framework in Frameworks */,
@@ -99,7 +95,6 @@
 			children = (
 				C4AB6F7F225660700088AF95 /* CountupAnimationLabel.h */,
 				C4AB6FA62256785B0088AF95 /* UILabel+CountupAnimation.swift */,
-				6AC4F7392256EA320013858E /* Easing.swift */,
 				C4AB6F80225660700088AF95 /* Info.plist */,
 			);
 			path = CountupAnimationLabel;
@@ -243,7 +238,6 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxAtmic.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxTest.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
 			);
@@ -284,7 +278,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AC4F73A2256EA320013858E /* Easing.swift in Sources */,
 				C4AB6FA72256785B0088AF95 /* UILabel+CountupAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

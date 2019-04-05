@@ -29,7 +29,7 @@ class CountupAnimationLabelTests: XCTestCase {
 //        let easing = ref.map { quadraticEaseInOut(x: $0) }
 //        print(easing(separeteCount: 30))
         let label = UILabel()
-        label.animate(start: 0, end: 5300, duration: 1).toBlocking().toArray()
+        XCTAssertNoThrow(try label.animate(start: 0, end: 5300, duration: 1).toBlocking().toArray())
     }
 
     func testPerformanceExample() {
