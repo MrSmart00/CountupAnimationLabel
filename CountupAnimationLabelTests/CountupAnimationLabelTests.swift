@@ -7,6 +7,11 @@
 //
 
 import XCTest
+import RxSwift
+import RxCocoa
+import RxTest
+import RxBlocking
+
 @testable import CountupAnimationLabel
 
 class CountupAnimationLabelTests: XCTestCase {
@@ -20,8 +25,11 @@ class CountupAnimationLabelTests: XCTestCase {
     }
 
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+//        let ref = Array(0...10).map { Float($0) / 10 }
+//        let easing = ref.map { quadraticEaseInOut(x: $0) }
+//        print(easing(separeteCount: 30))
+        let label = UILabel()
+        label.animate(start: 0, end: 5300, duration: 1).toBlocking().toArray()
     }
 
     func testPerformanceExample() {
@@ -30,5 +38,17 @@ class CountupAnimationLabelTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+
+//    func easing(separeteCount: Int) -> [Float] {
+//        let ref = Array(0...separeteCount).map { Float($0) / Float(separeteCount) }
+//        return ref.map { quadraticEaseInOut(x: $0) }
+//    }
+//    func quadraticEaseInOut(x: Float) -> Float {
+//        if x < 1 / 2 {
+//            return 2 * x * x
+//        } else {
+//            return (-2 * x * x) + (4 * x) - 1
+//        }
+//    }
 
 }

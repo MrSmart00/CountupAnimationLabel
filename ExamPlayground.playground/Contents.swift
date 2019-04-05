@@ -3,9 +3,11 @@
 import UIKit
 import CountupAnimationLabel
 import PlaygroundSupport
+import RxSwift
 
 class MyViewController : UIViewController {
     var label: UILabel?
+    let disposeBag = DisposeBag()
 
     override func loadView() {
         let view = UIView()
@@ -15,12 +17,20 @@ class MyViewController : UIViewController {
         label?.lineBreakMode = .byCharWrapping
         label?.numberOfLines = 0
         view.addSubview(label!)
+
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 150, width: 100, height: 50)
+        button.setTitle("reload", for: .normal)
+        button.setTitleColor(.purple, for: .normal)
+        button.addTarget(self, action: #selector(reload), for: .touchUpInside)
+        view.addSubview(button)
         self.view = view
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        label?.animate(start: 1000, end: 5350, duration: 1).drive()
+    @objc func reload() {
+        label?.animate(start: 1000, end: 5350, duration: 1)
+            .drive()
+            .disposed(by: disposeBag)
     }
 }
 // Present the view controller in the Live View window

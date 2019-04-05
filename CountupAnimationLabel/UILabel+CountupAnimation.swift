@@ -12,18 +12,52 @@ import RxSwift
 import RxCocoa
 
 extension UILabel {
+//    public func animate(start: Int, end: Int, duration: Float) -> Driver<Int> {
+//        let formatter = NumberFormatter()
+//        formatter.numberStyle = .decimal
+//        self.text = formatter.string(for: start)
+////        let interval = RxTimeInterval(duration / (Float(end) - Float(start)))
+//        let interval = RxTimeInterval(min(0.001, duration / (Float(end) - Float(start))))
+//
+//        let timer = Observable<Int>.interval(interval, scheduler: MainScheduler.instance)
+//        return timer
+//            .takeWhile { $0 <= (end - start) }
+//            .map { $0 + start }
+//            .do(onNext: { [weak self] (count) in
+//                self?.text = formatter.string(for: count)
+//            })
+//            .asDriver(onErrorJustReturn: 0)
+//    }
+
     public func animate(start: Int, end: Int, duration: Float) -> Driver<Int> {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         self.text = formatter.string(for: start)
-        let interval = RxTimeInterval(duration / (Float(end) - Float(start)))
+        let delta = end - start
+        let easeInOut = easing(separeteCount: 1000)
+        let interval = RxTimeInterval(0.001)
+
         let timer = Observable<Int>.interval(interval, scheduler: MainScheduler.instance)
         return timer
-            .takeWhile { $0 <= (end - start) }
-            .map { $0 + start }
+            .takeWhile { $0 < delta }
+            .map { Int(Float(delta) * easeInOut[$0]) + start }
             .do(onNext: { [weak self] (count) in
                 self?.text = formatter.string(for: count)
             })
             .asDriver(onErrorJustReturn: 0)
     }
+
+    func easing(separeteCount: Int) -> [Float] {
+        let ref = Array(0...separeteCount).map { Float($0) / Float(separeteCount) }
+        return ref.map { quadraticEaseInOut(x: $0) }
+    }
+
+    func quadraticEaseInOut(x: Float) -> Float {
+        if x < 1 / 2 {
+            return 2 * x * x
+        } else {
+            return (-2 * x * x) + (4 * x) - 1
+        }
+    }
+
 }
