@@ -9,10 +9,9 @@ class MyViewController : UIViewController {
     var label: UILabel?
     let disposeBag = DisposeBag()
 
-    override func loadView() {
-        let view = UIView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         view.backgroundColor = .white
-
         label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 100))
         label?.lineBreakMode = .byCharWrapping
         label?.numberOfLines = 0
@@ -24,7 +23,6 @@ class MyViewController : UIViewController {
         button.setTitleColor(.purple, for: .normal)
         button.addTarget(self, action: #selector(reload), for: .touchUpInside)
         view.addSubview(button)
-        self.view = view
     }
 
     @objc func reload() {
